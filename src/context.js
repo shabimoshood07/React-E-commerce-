@@ -39,7 +39,7 @@ const ProductProvider = ({ children }) => {
     const product = getItem(id);
     setState({
       ...state,
-      detailProduct: product,
+      detailProduct: product
     });
   };
 
