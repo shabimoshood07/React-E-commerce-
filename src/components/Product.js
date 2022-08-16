@@ -6,19 +6,20 @@ import { ReactPropTypes } from "react";
 import PropTypes from "prop-types";
 
 function Product({ product }) {
-  const { handleDetail, addToCart, cart } = useGlobalContext();
+  const { handleDetail, addToCart, openModal, closeModal } = useGlobalContext();
   const { id, title, img, price, inCart } = product;
   return (
     <ProductWrapper className="col-9 mx-auto col-md-6 col-lg-3 my-3">
       <div className="card">
-        <div className="img-container p-5" onClick={() => handleDetail(id)}>
+        <div className="img-container p-5" >
           <Link to="/details">
-            <img src={img} alt="" className="card-img-top" />
+            <img src={img} alt="" className="card-img-top" onClick={() => handleDetail(id)} />
           </Link>
           <button
             className="cart-btn"
             disabled={inCart ? true : false}
             onClick={() => {
+              openModal(id);
               addToCart(id);
             }}
           >
@@ -85,6 +86,7 @@ const ProductWrapper = styled.div`
     position: absolute;
     bottom: 0;
     right: 0;
+    z-index: 999;
     padding: 0.2rem 0.4rem;
     background: var(--lightBlue);
     border: none;
