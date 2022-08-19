@@ -7,14 +7,13 @@ const ProductProvider = ({ children }) => {
   const [state, setState] = useState({
     products: [],
     detailProduct: detailProduct,
-    modalOpen: true,
+    modalOpen: false,
     modalProduct: detailProduct,
     cart: [],
+    cartSubTotal: 0,
+    cartTax: 0,
+    cartTotal: 0,
   });
-
-  // const [modalProduct, setModalProduct] = useState({});
-  // const [cart, setCart] = useState([]);
-  // const [modalOpen, setModalOpen] = useState(true);
 
   const setProducts = () => {
     let tempProduct = [];
@@ -49,7 +48,6 @@ const ProductProvider = ({ children }) => {
   };
 
   // Handle Add to cart
-
   const addToCart = (id) => {
     let tempProducts = [...state.products];
     const index = tempProducts.indexOf(getItem(id));
@@ -57,9 +55,6 @@ const ProductProvider = ({ children }) => {
     product.inCart = true;
     const price = product.price;
     product.total = price;
-
-    // setCart((cart) => [...cart, product]);
-
     setState((state) => {
       return {
         ...state,
@@ -73,15 +68,13 @@ const ProductProvider = ({ children }) => {
   // open Modal
   const openModal = (id) => {
     const product = getItem(id);
-
     setState((state) => {
       return {
         ...state,
         modalProduct: product,
-        modalOpen:true
+        modalOpen: true,
       };
     });
-
   };
 
   // close Modal
@@ -94,9 +87,33 @@ const ProductProvider = ({ children }) => {
     });
   };
 
+  const increment = (id) => {
+    console.log("increment");
+  };
+
+  const decrement = (id) => {
+    console.log("decrement");
+  };
+  const removeItem = (id) => {
+    console.log("item removed");
+  };
+
+  const clearCart = (id) => {
+    console.log("cart cleared ");
+  };
   return (
     <ProductContext.Provider
-      value={{ ...state, handleDetail, addToCart, openModal, closeModal }}
+      value={{
+        ...state,
+        handleDetail,
+        addToCart,
+        openModal,
+        closeModal,
+        decrement,
+        increment,
+        removeItem,
+        clearCart,
+      }}
     >
       {children}
     </ProductContext.Provider>
@@ -109,23 +126,3 @@ export const useGlobalContext = () => {
 };
 
 export { ProductContext, ProductProvider };
-
-// const addToCart = (id) => {
-//   setState((currentState) => {
-//     let tempProducts = [...currentState.products];
-//     const p = tempProducts.find((item) => item.id === id);
-//     const product = { ...p, inCart: true, total: p.price, count: 1 };
-//     console.log(product);
-
-//     console.log({
-//       products: tempProducts,
-//       cart: [...state.cart, product],
-//       detailProduct: { ...product },
-//     });
-//     return {
-//       products: tempProducts,
-//       cart: [...currentState.cart, product],
-//       detailProduct: { ...product },
-//     };
-//   });
-// };

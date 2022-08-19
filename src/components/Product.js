@@ -11,9 +11,14 @@ function Product({ product }) {
   return (
     <ProductWrapper className="col-9 mx-auto col-md-6 col-lg-3 my-3">
       <div className="card">
-        <div className="img-container p-5" >
+        <div className="img-container p-5">
           <Link to="/details">
-            <img src={img} alt="" className="card-img-top" onClick={() => handleDetail(id)} />
+            <img
+              src={img}
+              alt=""
+              className="card-img-top"
+              onClick={() => handleDetail(id)}
+            />
           </Link>
           <button
             className="cart-btn"
@@ -86,7 +91,6 @@ const ProductWrapper = styled.div`
     position: absolute;
     bottom: 0;
     right: 0;
-    z-index: 999;
     padding: 0.2rem 0.4rem;
     background: var(--lightBlue);
     border: none;

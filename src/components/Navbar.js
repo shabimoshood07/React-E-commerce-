@@ -17,7 +17,7 @@ function Navbar() {
           </Link>
         </li>
       </ul>
-      <Link to="/store" className="ml-auto">
+      <Link to="/cart" className="ml-auto">
         <ButtonContainer>
           <span className="mr-5">
             <i className="fas fa-cart-plus" />
