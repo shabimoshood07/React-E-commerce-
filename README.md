@@ -14,8 +14,8 @@ Download the code or clone the repository
 In the project directory, you can run:
 ## Available Scripts
 
-### run `npm install`
-
+### `npm install`
+then
 ### `npm start`
 
 Runs the app in the development mode.\
