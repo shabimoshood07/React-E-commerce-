@@ -1,24 +1,29 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import logo from "../logo.svg";
-import ButtonContainer from "./Button"
+import ButtonContainer from "./Button";
 import styled from "styled-components";
+import { useGlobalContext } from "../context";
 
 function Navbar() {
+  const {addTotal} = useGlobalContext();
   return (
     <Nav className="navbar navbar-expand-sm  navbar-dark px-sm-5">
-      <Link to="/">
-        <img src={logo} alt="logo" className="navbar-brand" />
-      </Link>
-      <ul className="navbar-nav align-items-center">
-        <li className="nav-item ml-5">
-          <Link to="/" className="nav-link">
-            Products
-          </Link>
-        </li>
-      </ul>
+      <div className="d-flex">
+        <Link to="/">
+          <img src={logo} alt="logo" className="navbar-brand" />
+        </Link>
+        <ul className="navbar-nav align-items-center">
+          <li className="nav-item ml-5">
+            <Link to="/" className="nav-link">
+              Products
+            </Link>
+          </li>
+        </ul>
+      </div>
+
       <Link to="/cart" className="ml-auto">
-        <ButtonContainer>
+        <ButtonContainer onClick={addTotal}>
           <span className="mr-5">
             <i className="fas fa-cart-plus" />
           </span>
@@ -28,7 +33,6 @@ function Navbar() {
     </Nav>
   );
 }
-
 
 const Nav = styled.nav`
   background: var(--mainBlue);

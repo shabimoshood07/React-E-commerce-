@@ -2,7 +2,6 @@ import React from "react";
 import { useGlobalContext } from "../context";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import { ReactPropTypes } from "react";
 import PropTypes from "prop-types";
 
 function Product({ product }) {
@@ -24,8 +23,8 @@ function Product({ product }) {
             className="cart-btn"
             disabled={inCart ? true : false}
             onClick={() => {
-              openModal(id);
               addToCart(id);
+              openModal(id);
             }}
           >
             {inCart ? (

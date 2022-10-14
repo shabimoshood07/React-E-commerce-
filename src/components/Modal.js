@@ -5,7 +5,7 @@ import { ButtonContainer } from "./Button";
 import { Link } from "react-router-dom";
 
 function Modal() {
-  const { modalOpen, closeModal, modalProduct } = useGlobalContext();
+  const { modalOpen, closeModal, modalProduct,addTotal} = useGlobalContext();
   const { img, title, price } = modalProduct;
   if (!modalOpen) {
     return null;
@@ -35,6 +35,7 @@ function Modal() {
                 <ButtonContainer
                   cart
                   onClick={() => {
+                    addTotal()
                     closeModal();
                   }}
                 >

@@ -44,7 +44,7 @@ function Details() {
             </Link>
             <ButtonContainer
               cart
-              onClick={() => addToCart}
+              onClick={() => addToCart(id)}
               disabled={inCart ? true : false}
             >
               {inCart ? "in cart" : "add to cart"}
